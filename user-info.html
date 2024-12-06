@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic URL Example</title>
+  <script>
+    // Function to extract URL parameters
+    function getQueryParams() {
+      const url = window.location.href;
+      const params = {};
+      const regex = /\/\$name=(.+?)\/\$age=(\d+)\.html/;
+      const match = url.match(regex);
+      if (match) {
+        params.name = decodeURIComponent(match[1]);
+        params.age = decodeURIComponent(match[2]);
+      }
+      return params;
+    }
+
+    // Display extracted parameters
+    window.onload = () => {
+      const params = getQueryParams();
+      if (params.name) {
+        document.getElementById("name").textContent = params.name;
+      }
+      if (params.age) {
+        document.getElementById("age").textContent = params.age;
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>Dynamic URL Example</h1>
+  <div>
+    <p>Name: <span id="name">Not provided</span></p>
+    <p>Age: <span id="age">Not provided</span></p>
+  </div>
+</body>
+</html>
+
+/Users/aishwaryaminpuri/Documents
